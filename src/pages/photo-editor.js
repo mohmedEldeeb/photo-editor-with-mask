@@ -8,7 +8,7 @@ import "../styles/photo-editor.scss";
 const PhotoEditor = () => {
   const [initWidth,setInitWidth]=useState(100)
   const [initHeight,setInitHeight]=useState(100)
-  const [ filess,setfiless ] =useState(false)
+  const [ ifImage,setifImage ] =useState(false)
   const [minX, setMinX] = useState()
   const [minY, setMinY] = useState()
   const [maxX, setMaxX] = useState()
@@ -39,7 +39,7 @@ const PhotoEditor = () => {
   const getImage = () => takeScreenshot(screenShotRef.current).then(download)
   useEffect(()=>{
     console.log("contenar",container,pan)
-    if(filess){
+    if(ifImage){
       let imgWidth=imageRef.current.getBoundingClientRect().width;
       let imageHeight=imageRef.current.getBoundingClientRect().height;
       let containerWidth=container.offsetWidth;
@@ -64,7 +64,7 @@ const PhotoEditor = () => {
   
   const onDrop = useCallback((droppedFiles) => {
     //
-    setfiless(true)
+    setifImage(true)
     return droppedFiles
   }, []);
 
@@ -95,8 +95,7 @@ const PhotoEditor = () => {
     }
   }
   const handleValueRotate=()=>{
-    // e.preventDefault()
-    console.log("ho")
+    
     if(valueRotate == 0){
       setValueRoteat(90)
     }else if (valueRotate == 90){
