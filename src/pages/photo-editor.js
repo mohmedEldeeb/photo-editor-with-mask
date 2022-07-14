@@ -1,10 +1,13 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import React ,{ useCallback, useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import usePanZoom from "use-pan-and-zoom";
 import { useScreenshot , createFileName} from 'use-react-screenshot'
+import Masks from "./mask";
+import Cover from "./cover";
 
 import "../styles/photo-editor.scss";
-  
+
+
 const PhotoEditor = () => {
   const [initWidth,setInitWidth]=useState(100)
   const [initHeight,setInitHeight]=useState(100)
@@ -38,12 +41,11 @@ const PhotoEditor = () => {
   };
   const getImage = () => takeScreenshot(screenShotRef.current).then(download)
   useEffect(()=>{
-    console.log("contenar",container,pan)
     if(ifImage){
+
       let imgWidth=imageRef.current.getBoundingClientRect().width;
       let imageHeight=imageRef.current.getBoundingClientRect().height;
       let containerWidth=container.offsetWidth;
-      console.log("width",imgWidth,containerWidth)
       
       if(initWidth == 100){
         setMinX(- (((imgWidth /  100 ) * 15)))
@@ -57,7 +59,7 @@ const PhotoEditor = () => {
         setMaxY(0)
       }
 
-      console.log((((containerWidth /  100 ) * 15) + (imgWidth*.25)))
+      // console.log((((containerWidth /  100 ) * 15) + (imgWidth*.25)))
     }
   },[pan])
 
@@ -105,7 +107,6 @@ const PhotoEditor = () => {
     }else {
       setValueRoteat(0)
     }
-    console.log(valueRotate)
   }
   const changeScaleX=()=>{
     setValueScaleX(- valueScaleX)
@@ -126,7 +127,7 @@ const PhotoEditor = () => {
             <div className="image-inner-container" style={{ transform }}>
               {selectedImage}
             </div>
-
+            <Cover />
           </div>
         </div>
         <div className="drop-zone" {...getRootProps()}>
@@ -147,8 +148,12 @@ const PhotoEditor = () => {
           </div>
           <div className="buttonEdidor">
             <button key="1" className="btn" onClick={handleValueRotate}>Rotate </button>
-            <button key="2" className="btn" onClick={changeScaleX}>scaleX</button>
-            <button key="3" className="btn" onClick={changeScaleY}>scaleY</button>
+            <button key="2" className="btn" onClick={changeScaleX}>Flip Horizontaly</button>
+            <button key="3" className="btn" onClick={changeScaleY}>Flip Verticaly</button>
+          </div>
+          <br />
+          <div className="change-mask">
+            <Masks />
           </div>
       </div>
     </div>

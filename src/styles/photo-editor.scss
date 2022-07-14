@@ -56,14 +56,15 @@
     cursor: grabbing;
   }
 
-  .image-outer-container::after {
+  .image-outer-container > .cover-image {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background-image: url(../assets/splash.jpg);
+    // background-image: url(../assets/butterfly.svg);
+    overflow: hidden;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -91,10 +92,16 @@
 
 }
 
- .btn {
+.btn {
   margin: 10px;
   padding: 10px;
-} 
+}
+
+.change-mask {
+  margin-top: 20px;
+  border:5px solid rgb(106, 78, 188);
+  padding:50px
+}
 .buttonEdidor > .btn:active {
   box-shadow: 2px 2px ;
 }
