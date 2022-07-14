@@ -2,6 +2,8 @@
 
 ### The Photo Editor
 
+web site https://photo-editor-mask.herokuapp.com/
+
 You will build a screen where the user will upload an image and change the the revealed area.
 
 When the users moves the image it should always cover the masked area. __Done__
@@ -30,7 +32,7 @@ Download a preview image like a screenshot of what you're seeing on the screen. 
 
 #### Extra
 
-- Change mask __in new version, i will make new branch for it __
+- Change mask ~__in new version, i will make new branch for it __~ *  __Done__
 - Add rotation feature __Done__
 - Add flipping feature (Horizontally & Vertically) __Done__
 
